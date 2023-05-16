@@ -31,22 +31,27 @@ body {
     transparent 9%
   );
   background-size: 6rem 6rem;
-  background-position: 0% 0%;
-  animation: fadeIn 1s ease-in;
-  animation-delay: 2s;
+  background-position: 50% 50%;
+  animation: fadeIn 2s linear;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+  0% {
+    background-size: 18rem 18rem;
   }
-  to {
+  50% {
+    background-size: 12rem 12rem;
+  }
+  100% {
+    background-size: 6rem 6rem;
     opacity: 1;
   }
 }
 
 .welcome {
+  opacity: 0;
   width: fit-content;
   height: fit-content;
 
@@ -75,16 +80,125 @@ body {
     text-shadow: 0 0 1rem rgba(32, 139, 240, 0.4);
   }
   33% {
-    letter-spacing: 5rem;
+    letter-spacing: 3rem;
     text-shadow: 0 0 1rem white;
+    opacity: 1;
   }
   67% {
-    letter-spacing: 7rem;
-    text-shadow: 0 0 2rem white;
+    letter-spacing: 5rem;
+    text-shadow: 0 0 1rem white;
+    opacity: 0.5;
   }
   100% {
     opacity: 0;
-    letter-spacing: 9rem;
-    text-shadow: 0 0 3rem white;
+    letter-spacing: 7rem;
+    text-shadow: 0 0 1rem white;
+  }
+}
+
+.screen {
+  width: 80%;
+  max-width: 60rem;
+  height: 70%;
+  opacity: 0;
+
+  border: 0.2rem solid rgba(32, 139, 240, 0.7);
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(32, 139, 240, 0.5);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
+
+  animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards;
+}
+
+.screen-background {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+
+  background: linear-gradient(
+    rgba(32, 139, 240, 0.2) 0.5rem,
+    transparent 0.5rem
+  );
+  background-size: 1rem 1rem;
+  background-position: 0% 0%;
+
+  animation: panBackground 10s linear 0s infinite;
+}
+
+@keyframes panBackground {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+@keyframes fadeScreenIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.screen-image {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background-image: url("images/sassy.jpg");
+  filter: sepia(50%) hue-rotate(90deg);
+  background-position: 0% 0%;
+  background-size: 100%;
+
+  aspect-ratio: 16/9;
+
+  animation: panImageSassy 25s linear 3s infinite;
+}
+
+@keyframes panImageSassy {
+  0% {
+    background-position: 40% 0%;
+    background-size: 400%;
+  }
+  25% {
+    background-position: 95% 85%;
+    background-size: 400%;
+  }
+  25.001% {
+    background-position: 20% 80%;
+    background-size: 400%;
+  }
+  50% {
+    background-position: 60% 100%;
+    background-size: 400%;
+  }
+  50.001% {
+    background-position: 95% 85%;
+    background-size: 500%;
+  }
+  75% {
+    background-position: 95% 60%;
+    background-size: 500%;
+  }
+  75.01% {
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+    background-size: 100% 100%;
   }
 }
