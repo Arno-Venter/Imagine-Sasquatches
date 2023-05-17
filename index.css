@@ -8,7 +8,7 @@ html {
 
   background-color: black;
 
-  font: "Space mono" mono-space;
+  font-family: monospace, monospace;
 }
 
 body {
@@ -19,6 +19,41 @@ body {
   padding: 0;
 
   overflow-x: hidden;
+}
+
+.title-container {
+  width: 100%;
+  height: fit-content;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 5;
+
+  opacity: 0;
+
+  animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards;
+}
+
+.title {
+  width: fit-content;
+  height: fit-content;
+
+  color: rgb(32, 139, 240);
+  text-shadow: 0 0 1rem rgba(32, 139, 240, 1);
+  letter-spacing: 3rem;
+  font-size: 5rem;
+
+  user-select: none;
 }
 
 .background {
@@ -107,7 +142,7 @@ body {
   box-shadow: 0 0 1rem rgba(32, 139, 240, 0.5);
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
 
   overflow: hidden;
@@ -162,8 +197,6 @@ body {
   filter: sepia(50%) hue-rotate(90deg);
   background-position: 0% 0%;
   background-size: 100%;
-
-  aspect-ratio: 16/9;
 
   animation: panImageSassy 25s linear 3s infinite;
 }
