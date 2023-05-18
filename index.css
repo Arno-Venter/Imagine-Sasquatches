@@ -40,8 +40,8 @@ body {
 
   opacity: 0;
 
-  animation: fadeScreenIn 1s linear 3s;
-  animation-fill-mode: forwards;
+  /* animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards; */
 }
 
 .title {
@@ -67,9 +67,9 @@ body {
   );
   background-size: 6rem 6rem;
   background-position: 50% 50%;
-  animation: fadeIn 2s linear;
+  /* animation: fadeIn 2s linear;
   animation-delay: 1s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 @keyframes fadeIn {
@@ -103,10 +103,10 @@ body {
 
   transform: translate(-50%, -50%);
 
-  animation-name: msgMoveTowards;
+  /* animation-name: msgMoveTowards;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 @keyframes msgMoveTowards {
@@ -135,20 +135,23 @@ body {
   width: 80%;
   max-width: 60rem;
   height: 70%;
-  opacity: 0;
+  opacity: 1;
 
   border: 0.2rem solid rgba(32, 139, 240, 0.7);
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(32, 139, 240, 0.5);
   position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%, -50%);
+  left: 20%;
+  top: 20%;
 
   overflow: hidden;
 
-  animation: fadeScreenIn 1s linear 3s;
-  animation-fill-mode: forwards;
+  /* animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards; */
+
+  transform: perspective(5000px) rotateX(20deg)
+    rotateY(20deg);
+  transform-style: preserve-3d;
 }
 
 .screen-background {
@@ -164,7 +167,7 @@ body {
   background-size: 1rem 1rem;
   background-position: 0% 0%;
 
-  animation: panBackground 10s linear 0s infinite;
+  /* animation: panBackground 10s linear 0s infinite; */
 }
 
 @keyframes panBackground {

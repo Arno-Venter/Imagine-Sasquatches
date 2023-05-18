@@ -36,26 +36,26 @@ function shuffleLetters(event, original) {
   loopLetters();
 }
 
+function getInterval(interval) {
+  return interval;
+}
+
 function shuffleText(event, original) {
-  interval = setInterval(() => {
+  let interval = setInterval(() => {
     if (!beingShuffled) {
       shuffleLetters(event, original);
       console.log("EXECUTING");
       clearInterval(interval);
     }
-  }, 20);
+  }, 1);
 }
 
+let originalTitleTop = titles[0].innerText;
 titles[0].onmouseover = (event) => {
-  if (!beingShuffled) {
-    let original = event.target.innerText;
-    shuffleText(event, original);
-  }
+  shuffleText(event, originalTitleTop);
 };
 
+let originalTitleBot = titles[1].innerText;
 titles[1].onmouseover = (event) => {
-  if (!beingShuffled) {
-    let original = event.target.innerText;
-    shuffleText(event, original);
-  }
+  shuffleText(event, originalTitleBot);
 };
