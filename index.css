@@ -40,8 +40,8 @@ body {
 
   opacity: 0;
 
-  /* animation: fadeScreenIn 1s linear 3s;
-  animation-fill-mode: forwards; */
+  animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards;
 }
 
 .title {
@@ -67,9 +67,9 @@ body {
   );
   background-size: 6rem 6rem;
   background-position: 50% 50%;
-  /* animation: fadeIn 2s linear;
+  animation: fadeIn 2s linear;
   animation-delay: 1s;
-  animation-fill-mode: forwards; */
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -103,10 +103,10 @@ body {
 
   transform: translate(-50%, -50%);
 
-  /* animation-name: msgMoveTowards;
+  animation-name: msgMoveTowards;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-fill-mode: forwards; */
+  animation-fill-mode: forwards;
 }
 
 @keyframes msgMoveTowards {
@@ -132,26 +132,60 @@ body {
 }
 
 .screen {
-  width: 80%;
-  max-width: 60rem;
+  width: 50%;
+  max-width: 30rem;
   height: 70%;
-  opacity: 1;
+  opacity: 0;
 
   border: 0.2rem solid rgba(32, 139, 240, 0.7);
   border-radius: 1rem;
-  box-shadow: 0 0 1rem rgba(32, 139, 240, 0.5);
   position: absolute;
-  left: 20%;
-  top: 20%;
+  left: 50%;
+  top: 58%;
+  translate: -50% -50%;
 
-  overflow: hidden;
+  animation: fadeScreenIn 1s linear 3s;
+  animation-fill-mode: forwards;
 
-  /* animation: fadeScreenIn 1s linear 3s;
-  animation-fill-mode: forwards; */
-
-  transform: perspective(5000px) rotateX(20deg)
-    rotateY(20deg);
+  transform: perspective(5000px) rotateX(var(--mouseX))
+    rotateY(var(--mouseY));
+  transform-origin: center;
   transform-style: preserve-3d;
+}
+
+.screen::before {
+  content: "";
+  background: rgba(32, 139, 240, 0.4);
+  position: absolute;
+  left: -10%;
+  top: -5%;
+  width: 120%;
+  height: 110%;
+
+  border-radius: 5rem;
+
+  transform: translateZ(-1rem);
+
+  box-shadow: 0 0 1rem white;
+
+  z-index: -10;
+}
+
+.screen::after {
+  content: "";
+  background-color: black;
+  filter: blur(1rem);
+  opacity: 0.5;
+
+  position: absolute;
+  left: -2.5%;
+  top: -2.5%;
+  width: 105%;
+  height: 105%;
+
+  transform: translateZ(-0.5rem);
+
+  z-index: -9;
 }
 
 .screen-background {
@@ -167,7 +201,7 @@ body {
   background-size: 1rem 1rem;
   background-position: 0% 0%;
 
-  /* animation: panBackground 10s linear 0s infinite; */
+  animation: panBackground 10s linear 0s infinite;
 }
 
 @keyframes panBackground {
@@ -200,6 +234,9 @@ body {
   filter: sepia(50%) hue-rotate(90deg);
   background-position: 0% 0%;
   background-size: 100%;
+
+  overflow: hidden;
+  border-radius: 1rem;
 
   animation: panImageSassy 25s linear 3s infinite;
 }

@@ -13,7 +13,7 @@ function buildRandWord(length) {
 }
 
 function shuffleLetters(event, original) {
-  let n = 0;
+  let n = -1;
   beingShuffled = true;
 
   function loopLetters() {
@@ -30,7 +30,7 @@ function shuffleLetters(event, original) {
 
       if (n < original.length) loopLetters();
       else beingShuffled = false;
-    }, 40);
+    }, 30);
   }
 
   loopLetters();
@@ -59,3 +59,22 @@ let originalTitleBot = titles[1].innerText;
 titles[1].onmouseover = (event) => {
   shuffleText(event, originalTitleBot);
 };
+
+window.addEventListener("mousemove", (event) => {
+  let screen = document.querySelector(".screen");
+
+  let mouseX =
+    -(
+      (event.clientY - window.innerHeight / 2) /
+      (window.innerHeight / 2)
+    ) *
+      20 +
+    "deg";
+  let mouseY =
+    ((event.clientX - window.innerWidth / 2) /
+      (window.innerWidth / 2)) *
+      20 +
+    "deg";
+  screen.style.setProperty("--mouseX", mouseX);
+  screen.style.setProperty("--mouseY", mouseY);
+});
