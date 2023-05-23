@@ -88,6 +88,7 @@ const leftBtn = document.querySelector(".back-arrow");
 const carousel = document.querySelector(".card-container");
 
 rightBtn.addEventListener("click", () => {
+  leftBtn.hidden = false;
   leftBtn.style.opacity = 1;
   let currentCard = document.querySelector(".current-card");
   let curr = Array.from(carousel.children).findIndex(
@@ -98,19 +99,25 @@ rightBtn.addEventListener("click", () => {
     Array.from(carousel.children).length - 1
   ) {
     rightBtn.style.opacity = 0;
+    rightBtn.hidden = true;
   }
   let nextCard = Array.from(carousel.children)[curr + 1];
 
-  currentCard.style.left = -100 + "%";
-  nextCard.style.left = 0;
+  if (curr < Array.from(carousel.children).length - 1) {
+    currentCard.style.left = -100 + "%";
+    nextCard.style.left = 0;
 
-  currentCard.children[0].classList.remove("follow-mouse");
-  currentCard.classList.remove("current-card");
-  nextCard.classList.add("current-card");
-  nextCard.children[0].classList.add("follow-mouse");
+    currentCard.children[0].classList.remove(
+      "follow-mouse"
+    );
+    currentCard.classList.remove("current-card");
+    nextCard.classList.add("current-card");
+    nextCard.children[0].classList.add("follow-mouse");
+  }
 });
 
 leftBtn.addEventListener("click", () => {
+  rightBtn.hidden = false;
   rightBtn.style.opacity = 1;
   let currentCard = document.querySelector(".current-card");
   let curr = Array.from(carousel.children).findIndex(
@@ -119,14 +126,19 @@ leftBtn.addEventListener("click", () => {
 
   if (curr - 1 == 2) {
     leftBtn.style.opacity = 0;
+    leftBtn.hidden = true;
   }
   let prevCard = Array.from(carousel.children)[curr - 1];
 
-  currentCard.style.left = 100 + "%";
-  prevCard.style.left = 0;
+  if (curr > 2) {
+    currentCard.style.left = 100 + "%";
+    prevCard.style.left = 0;
 
-  currentCard.children[0].classList.remove("follow-mouse");
-  currentCard.classList.remove("current-card");
-  prevCard.classList.add("current-card");
-  prevCard.children[0].classList.add("follow-mouse");
+    currentCard.children[0].classList.remove(
+      "follow-mouse"
+    );
+    currentCard.classList.remove("current-card");
+    prevCard.classList.add("current-card");
+    prevCard.children[0].classList.add("follow-mouse");
+  }
 });
