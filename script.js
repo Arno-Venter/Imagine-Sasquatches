@@ -61,7 +61,7 @@ titles[1].onmouseover = (event) => {
 };
 
 window.addEventListener("mousemove", (event) => {
-  let screen = document.querySelector(".screen");
+  let screen = document.querySelectorAll(".screen");
 
   let mouseX =
     -(
@@ -75,6 +75,58 @@ window.addEventListener("mousemove", (event) => {
       (window.innerWidth / 2)) *
       20 +
     "deg";
-  screen.style.setProperty("--mouseX", mouseX);
-  screen.style.setProperty("--mouseY", mouseY);
+
+  screen.forEach((screen) => {
+    screen.style.setProperty("--mouseX", mouseX);
+    screen.style.setProperty("--mouseY", mouseY);
+  });
+});
+
+// carousel of screens
+const rightBtn = document.querySelector(".forward-arrow");
+const leftBtn = document.querySelector(".back-arrow");
+const carousel = document.querySelector(".card-container");
+
+rightBtn.addEventListener("click", () => {
+  leftBtn.style.opacity = 1;
+  let currentCard = document.querySelector(".current-card");
+  let curr = Array.from(carousel.children).findIndex(
+    (card, index) => card == currentCard
+  );
+  if (
+    curr + 1 ==
+    Array.from(carousel.children).length - 1
+  ) {
+    rightBtn.style.opacity = 0;
+  }
+  let nextCard = Array.from(carousel.children)[curr + 1];
+
+  currentCard.style.left = -100 + "%";
+  nextCard.style.left = 0;
+
+  currentCard.children[0].classList.remove("follow-mouse");
+  currentCard.classList.remove("current-card");
+  nextCard.classList.add("current-card");
+  nextCard.children[0].classList.add("follow-mouse");
+});
+
+leftBtn.addEventListener("click", () => {
+  rightBtn.style.opacity = 1;
+  let currentCard = document.querySelector(".current-card");
+  let curr = Array.from(carousel.children).findIndex(
+    (card, index) => card == currentCard
+  );
+
+  if (curr - 1 == 2) {
+    leftBtn.style.opacity = 0;
+  }
+  let prevCard = Array.from(carousel.children)[curr - 1];
+
+  currentCard.style.left = 100 + "%";
+  prevCard.style.left = 0;
+
+  currentCard.children[0].classList.remove("follow-mouse");
+  currentCard.classList.remove("current-card");
+  prevCard.classList.add("current-card");
+  prevCard.children[0].classList.add("follow-mouse");
 });
